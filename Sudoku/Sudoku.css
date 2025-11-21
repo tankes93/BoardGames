@@ -1,0 +1,298 @@
+body {
+    background: #000000;
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-title {
+    color: #00d4ff;
+    font-size: 3em;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.game-subtitle {
+    color: #ffffff;
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.game-panel {
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
+.difficulty-selector {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.difficulty-selector h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.btn-difficulty {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    color: #00d4ff;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-difficulty:hover {
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    border-color: #00d4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.btn-difficulty.active {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    border-color: #00d4ff;
+    color: #0f0f1e;
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.5);
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.sudoku-board {
+    border-collapse: collapse;
+    background: #0f0f1e;
+    border: 3px solid #00d4ff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sudoku-board td {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sudoku-board td:nth-child(3),
+.sudoku-board td:nth-child(6) {
+    border-right: 2px solid #00d4ff;
+}
+
+.sudoku-board tr:nth-child(3) td,
+.sudoku-board tr:nth-child(6) td {
+    border-bottom: 2px solid #00d4ff;
+}
+
+.sudoku-board input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: #00d4ff;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.sudoku-board input:disabled {
+    color: #ffffff;
+    cursor: default;
+}
+
+.sudoku-board td:hover {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.sudoku-board td.selected {
+    background: rgba(0, 212, 255, 0.3);
+    box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.sudoku-board td.error {
+    background: rgba(255, 51, 102, 0.3);
+    animation: shake 0.5s;
+}
+
+.sudoku-board td.correct {
+    background: rgba(0, 255, 136, 0.3);
+    animation: pulse 0.5s;
+}
+
+.sudoku-board td.hint {
+    background: rgba(255, 204, 0, 0.3);
+    animation: glow 1s;
+}
+
+.number-pad {
+    margin-bottom: 25px;
+}
+
+.number-pad h4 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.number-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.number-btn {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    border: none;
+    color: #0f0f1e;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.number-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 212, 255, 0.5);
+}
+
+.number-btn:active {
+    transform: translateY(-1px);
+}
+
+.number-btn.selected {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.5);
+}
+
+.erase-btn {
+    background: linear-gradient(135deg, #ff3366 0%, #ff0044 100%);
+    grid-column: span 2;
+}
+
+.erase-btn:hover {
+    box-shadow: 0 7px 20px rgba(255, 51, 102, 0.5);
+}
+
+.game-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.game-controls .btn {
+    padding: 12px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.game-controls .btn-primary {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    color: #0f0f1e;
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.game-controls .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 212, 255, 0.5);
+}
+
+.game-controls .btn-success {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+    color: #0f0f1e;
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+}
+
+.game-controls .btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 255, 136, 0.5);
+}
+
+.game-controls .btn-warning {
+    background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+    color: #0f0f1e;
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+}
+
+.game-controls .btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 204, 0, 0.5);
+}
+
+.game-controls .btn-info {
+    background: linear-gradient(135deg, #9966ff 0%, #6633ff 100%);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(153, 102, 255, 0.3);
+}
+
+.game-controls .btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(153, 102, 255, 0.5);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.5); }
+    50% { box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.8); }
+}
+
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2em;
+    }
+
+    .sudoku-board td {
+        width: 35px;
+        height: 35px;
+    }
+
+    .sudoku-board input {
+        font-size: 1.2em;
+    }
+
+    .number-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .game-controls {
+        grid-template-columns: 1fr;
+    }
+}

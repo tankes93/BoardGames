@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris - Dark Games</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="Tetris.css">
+    
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Utility Scripts -->
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/inputHandler.js"></script>
+    <script src="../scripts/responsiveUtils.js"></script>
+    <script src="../scripts/importNavbar.js"></script>
+    <link rel="stylesheet" href="../scripts/responsive.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    
+    <div class="container game-container">
+        <div class="game-header">
+            <h1 class="game-title">
+                <i class="fa fa-th-large"></i> Tetris
+            </h1>
+            <p class="game-subtitle">Stack blocks and clear lines!</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="side-panel">
+                    <h3>Next Piece</h3>
+                    <canvas id="next-canvas" width="120" height="120"></canvas>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="game-panel">
+                    <canvas id="game-canvas" width="300" height="600"></canvas>
+                    
+                    <div class="game-controls">
+                        <button class="btn btn-primary" id="start-btn" onclick="startGame()">
+                            <i class="fa fa-play"></i> Start
+                        </button>
+                        <button class="btn btn-warning" id="pause-btn" onclick="pauseGame()" disabled>
+                            <i class="fa fa-pause"></i> Pause
+                        </button>
+                        <button class="btn btn-success" onclick="resetGame()">
+                            <i class="fa fa-refresh"></i> Reset
+                        </button>
+                        <button class="btn btn-info" id="scroll-lock-btn" onclick="toggleScrollLock()">
+                            <i class="fa fa-unlock"></i> <span id="lock-text">Lock Scroll</span>
+                        </button>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h4><i class="fa fa-keyboard-o"></i> Controls</h4>
+                        <div class="control-item">
+                            <span class="key">←→</span> Move
+                        </div>
+                        <div class="control-item">
+                            <span class="key">↓</span> Soft Drop
+                        </div>
+                        <div class="control-item">
+                            <span class="key">↑</span> Rotate
+                        </div>
+                        <div class="control-item">
+                            <span class="key">Space</span> Hard Drop
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="side-panel score-panel">
+                    <h3>Score</h3>
+                    <div class="score-value" id="score">0</div>
+                    
+                    <h3>Lines</h3>
+                    <div class="lines-value" id="lines">0</div>
+                    
+                    <h3>Level</h3>
+                    <div class="level-value" id="level">1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Tetris.js"></script>
+</body>
+</html>

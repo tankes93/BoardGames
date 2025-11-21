@@ -1,0 +1,289 @@
+body {
+    background: #000000;
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-title {
+    color: #00d4ff;
+    font-size: 4em;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.game-subtitle {
+    color: #ffffff;
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.game-panel {
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.score-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.score-label {
+    color: #00d4ff;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.score-value {
+    color: #ffffff;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.game-board-container {
+    position: relative;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.game-board {
+    background: #0f0f1e;
+    border: 3px solid #00d4ff;
+    border-radius: 15px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    width: 390px;
+    height: 390px;
+    position: relative;
+}
+
+.grid-cell {
+    width: 85px;
+    height: 85px;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.tile {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    animation: appear 0.2s ease;
+    z-index: 10;
+}
+
+.tile-2 { background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); color: #0f0f1e; }
+.tile-4 { background: linear-gradient(135deg, #0099ff 0%, #0066cc 100%); color: #ffffff; }
+.tile-8 { background: linear-gradient(135deg, #ff9900 0%, #ff6600 100%); color: #ffffff; }
+.tile-16 { background: linear-gradient(135deg, #ff6600 0%, #ff3300 100%); color: #ffffff; }
+.tile-32 { background: linear-gradient(135deg, #ff3366 0%, #ff0044 100%); color: #ffffff; }
+.tile-64 { background: linear-gradient(135deg, #ff0044 0%, #cc0033 100%); color: #ffffff; }
+.tile-128 { background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%); color: #ffffff; font-size: 1.8em; }
+.tile-256 { background: linear-gradient(135deg, #ffcc00 0%, #ffaa00 100%); color: #ffffff; font-size: 1.8em; }
+.tile-512 { background: linear-gradient(135deg, #ffaa00 0%, #ff8800 100%); color: #ffffff; font-size: 1.8em; }
+.tile-1024 { background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%); color: #ffffff; font-size: 1.5em; }
+.tile-2048 { background: linear-gradient(135deg, #9966ff 0%, #6633ff 100%); color: #ffffff; font-size: 1.5em; animation: glow 1s infinite; }
+
+.tile-super { background: linear-gradient(135deg, #ff00ff 0%, #cc00cc 100%); color: #ffffff; font-size: 1.3em; }
+
+.game-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 30, 0.95);
+    border-radius: 15px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.game-message.active {
+    display: flex;
+}
+
+.message-content {
+    text-align: center;
+}
+
+#message-text {
+    color: #00d4ff;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+}
+
+.game-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.game-controls .btn {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.game-controls .btn-primary {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    color: #0f0f1e;
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.game-controls .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 212, 255, 0.5);
+}
+
+.game-controls .btn-info {
+    background: linear-gradient(135deg, #9966ff 0%, #6633ff 100%);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(153, 102, 255, 0.3);
+}
+
+.game-controls .btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(153, 102, 255, 0.5);
+}
+
+#scroll-lock-btn.btn-warning {
+    background: linear-gradient(135deg, #ffcc00 0%, #ff9900 100%);
+    color: #0f0f1e;
+}
+
+#scroll-lock-btn.btn-danger {
+    background: linear-gradient(135deg, #ff3366 0%, #cc0033 100%);
+    color: #ffffff;
+}
+
+.instructions {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.instructions h4 {
+    color: #00d4ff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+}
+
+.key {
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    color: #0f0f1e;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+    display: inline-block;
+}
+
+@keyframes appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(153, 102, 255, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(153, 102, 255, 1);
+    }
+}
+
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 3em;
+    }
+
+    .tile {
+        font-size: 1.5em;
+    }
+
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 1.3em;
+    }
+
+    .tile-1024, .tile-2048 {
+        font-size: 1.1em;
+    }
+
+    .tile-super {
+        font-size: 1em;
+    }
+
+    #message-text {
+        font-size: 2em;
+    }
+
+    .control-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,103 @@
+<html>
+	<head>
+		<title>	Ludo </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		 
+        <script type="text/javascript" src="../scripts/utils.js"></script>
+		<script type="text/javascript" src="../scripts/inputHandler.js"></script>
+		<script type="text/javascript" src="../scripts/responsiveUtils.js"></script>
+		<script type="text/javascript" src="../scripts/importNavbar.js"></script>
+		<link type="text/css" rel="stylesheet" href="../scripts/responsive.css" />
+		<script type="text/javascript" src="scripts/Cell.js"></script>
+		<script type="text/javascript" src="scripts/PlayerCoin.js"></script>
+		<script type="text/javascript" src="scripts/Player.js"></script>
+		<script type="text/javascript" src="scripts/Game.js"></script>
+		<script type="text/javascript" src="scripts/LudoScript.js"></script>
+		<link type="text/css" rel="stylesheet" href="LudoStyle.css">
+	</head>
+	
+	<body>
+
+		<div id="navbar"></div>
+
+		<div id="mainContent">
+				
+			<div id="theBoard">
+				<img src="images/board.png" class="board" >
+		
+				<img src="images/red.png" id="red_0" class="coin" >
+				<img src="images/red.png" id="red_1" class="coin" >
+				<img src="images/red.png" id="red_2" class="coin" >
+				<img src="images/red.png" id="red_3" class="coin" >
+
+				<img src="images/green.png" id="green_0" class="coin" >
+				<img src="images/green.png" id="green_1" class="coin" >
+				<img src="images/green.png" id="green_2" class="coin" >
+				<img src="images/green.png" id="green_3" class="coin" >
+
+				<img src="images/blue.png" id="blue_0" class="coin" >
+				<img src="images/blue.png" id="blue_1" class="coin" >
+				<img src="images/blue.png" id="blue_2" class="coin" >
+				<img src="images/blue.png" id="blue_3" class="coin" >
+				
+				<img src="images/yellow.png" id="yellow_0" class="coin" >
+				<img src="images/yellow.png" id="yellow_1" class="coin" >
+				<img src="images/yellow.png" id="yellow_2" class="coin" >
+				<img src="images/yellow.png" id="yellow_3" class="coin" >
+			</div>
+			
+			<div id="allControls" >
+				<div class="startControls" v-if="game.gameStatus == -1"> 
+					<h4 class="instruct" > Number Of Players </h4>
+					<hr>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons" > 
+						<label class="btn btn-default btnDiff active" >
+							<input type="radio" name="nmbrOfPlayers" value="2" checked > 2 </input> 
+						</label> 
+						<label class="btn btn-default btnDiff"> 
+							<input type="radio" name="nmbrOfPlayers" value="3" > 3 </input> 
+						</label> 
+						<label class="btn btn-default btnDiff"> 
+							<input type="radio" name="nmbrOfPlayers" value="4"> 4 </input> 
+						</label> 
+					</div>
+					<hr>
+					<button id="btnStartGame" class="btn btn-default game-btns" > Start game</button>
+				</div>
+				
+				<div class="controls"  v-if="game.gameStatus == 0"> 
+					<h3 id="instruct" class="instruct"
+						v-bind:style="{color: game.players[game.currPlayer].color}" > 
+					{{game.instruction}} 
+				</h3>
+				<hr> 
+				<div id="theDice">
+					<img src="images/dice-six-faces-one.png" class="dice" >
+				</div>
+				<button id="btnGetNewGame" class="btn btn-default game-btns" > Start New game </button>
+			</div>
+
+
+			<div class="controls" v-if="game.gameStatus == 1">
+					<h3 id="endInstruct" class="instruct"
+						v-for="(color,i) in game.endList" v-bind:style="{color: color}"  > 
+						{{i+1}} : {{ color.toUpperCase() }} 
+					</h3>
+					<hr>
+					<button id="btnPlayAgain" class="btn btn-default game-btns" > Play again </button>
+				</div>
+
+			</div>
+			
+		</div>
+	</body>
+	
+</html>

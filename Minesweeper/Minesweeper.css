@@ -1,0 +1,375 @@
+/* Minesweeper - Responsive Dark Theme */
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #1a1a2e;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #0f3460 0%, #16213e 100%);
+}
+
+body.dark {
+    background: #000000;
+    background-attachment: fixed;
+    text-align: center;
+    min-height: 100vh;
+    color: #eaeaea;
+    padding: 0;
+    margin: 0;
+}
+
+/* Game Container */
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.game > #controls,
+.game > #theBoard {
+    margin: 0;
+}
+
+/* Game Board */
+#theBoard {
+    border: 3px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-collapse: separate;
+    border-spacing: 4px;
+    transition: transform 0.3s ease;
+}
+
+#theBoard td {
+    padding: 0;
+}
+
+/* Cell Buttons */
+td button {
+    font-size: 22px;
+    font-weight: 700;
+    width: 50px;
+    height: 50px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+    color: #00d4ff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+td button:hover {
+    background: linear-gradient(135deg, #3a3a4e 0%, #2a2a3e 100%);
+    border-color: #00d4ff;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    transform: scale(1.05);
+}
+
+td button:active {
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    transform: scale(0.95);
+}
+
+/* Controls Panel */
+#controls {
+    background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px;
+    font-size: 22px;
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Status Display */
+#instruct {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 153, 255, 0.2) 100%);
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: #00d4ff;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    margin: 0 0 20px 0;
+    word-wrap: break-word;
+}
+
+/* Mark Mines Container */
+.mark-mines-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #00d4ff;
+    margin: 20px 0;
+}
+
+.mark-mines-container label {
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#markMine {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+    accent-color: #00d4ff;
+}
+
+/* Restart Button */
+#restart {
+    width: 100%;
+    max-width: 300px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    cursor: pointer;
+    touch-action: manipulation;
+    margin: 20px auto 0;
+    display: block;
+}
+
+#restart:hover {
+    background: linear-gradient(135deg, #0099ff 0%, #00d4ff 100%);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+    transform: scale(1.05);
+}
+
+#restart:active {
+    transform: scale(0.95);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(0, 212, 255, 0.3);
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+
+/* Tablets and smaller laptops */
+@media (max-width: 1100px) {
+    td button {
+        font-size: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    #instruct {
+        padding: 15px;
+        font-size: 20px;
+    }
+    
+    #restart {
+        max-width: 250px;
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    #controls {
+        padding: 25px;
+        font-size: 20px;
+    }
+}
+
+/* Large mobile phones and small tablets */
+@media (max-width: 768px) {
+    .game {
+        padding: 20px 10px;
+        gap: 15px;
+    }
+    
+    td button {
+        font-size: 18px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    #theBoard {
+        padding: 8px;
+        border-spacing: 3px;
+    }
+    
+    #controls {
+        font-size: 18px;
+        max-width: 100%;
+        padding: 20px;
+    }
+    
+    #instruct {
+        font-size: 18px;
+        padding: 12px;
+    }
+    
+    #restart {
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .mark-mines-container {
+        font-size: 16px;
+    }
+}
+
+/* Standard mobile phones */
+@media (max-width: 580px) {
+    .game {
+        padding: 15px 5px;
+    }
+    
+    td button {
+        font-size: 16px;
+        width: 36px;
+        height: 36px;
+    }
+    
+    #theBoard {
+        padding: 6px;
+        border-spacing: 2px;
+        border-width: 2px;
+    }
+    
+    #controls {
+        font-size: 16px;
+        padding: 15px;
+    }
+    
+    #instruct {
+        font-size: 16px;
+        padding: 10px;
+    }
+    
+    #restart {
+        height: 45px;
+        font-size: 14px;
+    }
+    
+    .mark-mines-container {
+        font-size: 14px;
+    }
+    
+    #markMine {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+    td button {
+        font-size: 14px;
+        width: 32px;
+        height: 32px;
+    }
+    
+    #theBoard {
+        padding: 4px;
+        border-spacing: 1px;
+    }
+    
+    #controls {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    #instruct {
+        font-size: 14px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .game {
+        flex-direction: row;
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    #theBoard {
+        max-height: 90vh;
+    }
+    
+    #controls {
+        max-width: 350px;
+    }
+    
+    #instruct {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    #restart {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    td button {
+        border-width: 1.5px;
+    }
+}
+
+/* Touch device specific */
+.is-touch td button {
+    /* Ensure minimum touch target size */
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes celebrate {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Victory/Defeat animations */
+.victory #instruct {
+    animation: celebrate 0.5s ease-in-out 3;
+}
+
+.defeat #instruct {
+    animation: pulse 0.5s ease-in-out 2;
+}

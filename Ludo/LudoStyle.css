@@ -1,0 +1,236 @@
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+    background-color: #1f0303;
+}
+
+body {
+    background-color: #000000;
+    text-align: center;
+}
+
+.swal2-popup {
+    font-size: 1.6rem !important;
+}
+
+.board,
+#theBoard {
+    width: 600px;
+    height: 600px;
+}
+
+#theBoard {
+    position: relative;
+    left: 10%;
+}
+
+.game-btns {
+    margin-top: 20px;
+    font-size: 22px;
+    width: 48%;
+}
+
+.btn-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btnDiff {
+    font-size: 20px;
+    width: 30%;
+}
+.btnDiff.active {
+    pointer-events: none;
+    background-color: rgba(255, 245, 215, 0.8);
+    border: 3px solid Green;
+}
+
+.coin {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 45px;
+    height: 65px;
+    cursor: pointer;
+    border-radius: 35%;
+}
+.circle {
+    width: 45px;
+    height: 65px;
+    border-radius: 100%;
+    border: 1px solid black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.controls,
+.startControls {
+    background-color: #ff5e6c;
+    font-size: 22px;
+    position: absolute;
+    top: 100px;
+    left: 55%;
+    width: 500px;
+    padding: 20px;
+}
+.startControls {
+    left: 10%;
+    top: 100px;
+}
+
+.instruct {
+    background-color: #fff5d7;
+    padding: 15px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.instruct,
+#endInstruct {
+    padding: 30px;
+    font-size: 36px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.75px;
+    -webkit-text-stroke-color: black;
+}
+
+#endInstruct {
+    padding: 10px;
+    font-size: 22px;
+}
+
+#theDice,
+.dice {
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+}
+
+#restart,
+#start {
+    width: 150px;
+    height: 70px;
+    font-size: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.btn-info {
+    background-color: #f9c5bd;
+    color: black;
+    margin: 10px;
+    font-size: 22px;
+    padding: 10px 40px;
+}
+
+/* DARK THEME -- START */
+body.dark {
+    background-color: #22272e;
+}
+body.dark .controls,
+body.dark .startControls {
+    background: #30363c;
+}
+
+body.dark .btn-default {
+    color: #adbac7;
+    background: #373e47;
+    border-color: #ccc;
+}
+body.dark .btn-default:hover {
+    color: white;
+    background: #444c56;
+    border-color: white;
+}
+body.dark .instruct {
+    color: white;
+    background: #22272e;
+}
+/* DARK THEME -- END */
+
+@media (max-width: 1220px) {
+    .controls,
+    .startControls {
+        position: absolute;
+        top: 720px;
+        left: 10%;
+        width: 600px;
+        font-size: 20px;
+    }
+    .startControls {
+        top: 100px;
+    }
+
+    .instruct {
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #instruct,
+    #endInstruct {
+        padding: 10px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    #theDice,
+    .dice {
+        margin: auto;
+        width: 150px;
+        height: 150px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 768px) {
+    .board,
+    #theBoard {
+        width: 360px;
+        height: 360px;
+    }
+    #theBoard {
+        position: relative;
+        left: 5%;
+    }
+
+    .controls,
+    .startControls {
+        position: absolute;
+        left: 5%;
+        top: 480px;
+        width: 360px;
+    }
+
+    .startControls {
+        width: 90%;
+        top: 150px;
+    }
+
+    .coin {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 30px;
+        height: 45px;
+    }
+
+    #theDice,
+    .dice {
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+    }
+    .game-btns {
+        font-size: 16px;
+    }
+}

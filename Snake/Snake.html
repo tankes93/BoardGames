@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Snake - Dark Theme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script type="text/javascript" src="../scripts/utils.js"></script>
+    <script type="text/javascript" src="../scripts/inputHandler.js"></script>
+    <script type="text/javascript" src="../scripts/responsiveUtils.js"></script>
+    <script type="text/javascript" src="../scripts/importNavbar.js"></script>
+    <link type="text/css" rel="stylesheet" href="../scripts/responsive.css" />
+    <script type="text/javascript" src="scripts/Cell.js"></script>
+    <script type="text/javascript" src="scripts/Snake.js"></script>
+    <script type="text/javascript" src="scripts/Game.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <link type="text/css" rel="stylesheet" href="Snake.css" />
+</head>
+
+<body class="dark">
+    <div id="navbar"></div>
+
+    <div id="app">
+        <div class="game">
+            <table id="theBoard">
+                <tr v-for="row in board">
+                    <td v-for="cell in row" class="cell" v-bind:class="getCellClass(cell)" v-bind:style="{backgroundColor: cell.color}"></td>
+                </tr>
+            </table>
+
+            <div class="controls">
+                <h4 id="instruct">Score: {{score}}</h4>
+                <p v-if="!gameStarted && !gameOver" style="color: #00d4ff; margin: 10px 0;">Press Space or click Start to begin</p>
+                <p v-if="gameOver" style="color: #ff3366; margin: 10px 0;">Game Over! Press Space or click New Game</p>
+                <hr />
+                <div class="flex-row">
+                    <button class="btn btn-default ctrlBtn" type="button" @click="moveLeft">
+                        <i class="fa fa-angle-left"></i>
+                    </button>
+                    <div class="flex-column">
+                        <button class="btn btn-default ctrlBtn" type="button" @click="moveUp">
+                            <i class="fa fa-angle-up"></i>
+                        </button>
+                        <button class="btn btn-default ctrlBtn" type="button" @click="moveDown">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-default ctrlBtn" type="button" @click="moveRight">
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+                <hr />
+                <button v-if="!gameStarted" class="btn btn-primary" @click="startGame" style="margin-right: 10px;">
+                    <i class="fa fa-play"></i> Start Game
+                </button>
+                <button v-if="gameStarted && !gameOver" class="btn btn-warning" @click="pauseGame" style="margin-right: 10px;">
+                    <i class="fa fa-pause"></i> Pause
+                </button>
+                <button class="btn btn-default" @click="resetGame" style="margin-right: 10px;">
+                    <i class="fa fa-refresh"></i> New Game
+                </button>
+                <button class="btn btn-info" id="scroll-lock-btn" @click="toggleScrollLock">
+                    <i :class="scrollLocked ? 'fa fa-lock' : 'fa fa-unlock'"></i> {{scrollLocked ? 'Unlock' : 'Lock'}} Scroll
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
